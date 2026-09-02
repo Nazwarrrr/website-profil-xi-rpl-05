@@ -10,10 +10,18 @@ class ExampleTest extends TestCase
     /**
      * A basic test example.
      */
-    public function test_the_application_returns_a_successful_response(): void
+    public function test_the_public_class_pages_render_successfully(): void
     {
-        $response = $this->get('/');
+        foreach (['/', '/profil', '/anggota', '/kontak'] as $path) {
+            $this->get($path)->assertOk();
+        }
+    }
 
-        $response->assertStatus(200);
+    public function test_the_members_page_renders_dynamic_team_data(): void
+    {
+        $this->get('/anggota')
+            ->assertOk()
+            ->assertSee('Alya Putri')
+            ->assertSee('Developer Kontak');
     }
 }
