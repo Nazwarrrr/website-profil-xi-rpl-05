@@ -12,6 +12,11 @@ use App\Http\Controllers\KontakController;
 | Setiap route diarahkan ke controller sesuai role masing-masing.
 */
 
+
+Route::get('/profil', function () {
+    return view('profil');
+});
+=======
 Route::get('/', function () {
     return view('welcome');
 })->name('beranda');
@@ -22,3 +27,4 @@ Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index
 
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak.index');
 Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store');
+
